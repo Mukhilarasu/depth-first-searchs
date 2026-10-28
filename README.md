@@ -88,6 +88,80 @@ F H <BR>
 <hr>
 ['0', '1', '2', '3', '4']
 
+<h3>Program:</h3>
+from collections import defaultdict 
+
+import networkx as nx 
+
+import matplotlib.pyplot as plt 
+
+ 
+
+graph=defaultdict(list) 
+
+G=nx.Graph() 
+
+nodes,edges=map(int,input().split()) 
+
+for i in range(edges): 
+
+    u,v=map(str,input().split()) 
+
+    graph[u].append(v) 
+
+    graph[v].append(u) 
+
+    G.add_edge(u,v) 
+
+nx.draw(G, with_labels=True, node_color="lightblue", edge_color="red", width=2, node_size=2000) 
+
+plt.show() 
+
+print(graph) 
+
+ 
+
+#Depth First Search 
+
+def dfs(graph, start, visited, path): 
+
+    path.append(start) 
+
+    visited[start] = True 
+
+ 
+
+    for neighbour in graph[start]: 
+
+        if not visited[neighbour]: 
+
+            dfs(graph, neighbour, visited, path) 
+
+ 
+
+    return path 
+
+ 
+
+# input start node 
+
+start = input() 
+
+ 
+
+path = [] 
+
+visited = defaultdict(bool) 
+
+traversepath = dfs(graph, start, visited, path) 
+
+print("Depth First Search:") 
+
+print(traversepath) 
+
+<h3>Output:</h3>
+<img width="817" height="657" alt="image" src="https://github.com/user-attachments/assets/cd21ff14-a143-4af8-8923-ad109bc8832c" />
+
 <hr>
 <h3>Result:</h3>
 <hr>
